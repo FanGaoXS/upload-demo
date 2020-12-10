@@ -1,0 +1,11 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password:
+mybatis:
+  type-aliases-package: cn.blctek.upload.pojo
+  mapper-locations: mybatis/mapper/*Mapper.xml
