@@ -9,18 +9,19 @@ function testRequest(config) {
   });
   // response拦截器，过滤data
   axiosInstance.interceptors.response.use(res => {
+    console.log('interceptors.response.onFulfilled->',res);
     return res.data;
   },error => {
-    console.log(error)
-  })
-  return axiosInstance(config);
+    console.log('interceptors.response.onRejected->',error);
+    throw error;
+  });
 }
 
 // 本地request测试
 function localRequest(config) {
   // 创建axios实例，配置baseURL
   let axiosInstance = Axios.create({
-    baseURL: 'http://127.0.0.1:8089',
+    baseURL: 'http://127.0.0.1:8083/upload-server',
     timeout: 5000
   });
   // response拦截器，过滤data
@@ -33,7 +34,27 @@ function localRequest(config) {
   });
   return axiosInstance(config);
 }
+
+// 远程wqk服务器测试
+function wqkRequest(config) {
+  // 创建axios实例，配置baseURL
+  let axiosInstance = Axios.create({
+    baseURL: 'https://yueke.cloud/upload-server',
+    timeout: 5000
+  });
+  // response拦截器，过滤data
+  axiosInstance.interceptors.response.use(res => {
+    console.log('interceptors.response.onFulfilled->',res);
+    return res.data;
+  },error => {
+    console.log('interceptors.response.onRejected->',error);
+    throw error;
+  });
+  return axiosInstance(config);
+}
+
 export {
   testRequest,
-  localRequest
+  localRequest,
+  wqkRequest
 }

@@ -1,6 +1,7 @@
 import {
   testRequest,
-  localRequest
+  localRequest,
+  wqkRequest
 } from "./request";
 
 // 向后端上传图片
@@ -34,26 +35,11 @@ function localUpload(param,formItem) {
     },
     data:uploadData
   }
-  return localRequest(config);
+  return wqkRequest(config);
 }
 
-// 利用本地服务器提交车辆信息
-function localUploadCar(formItem) {
-  console.log(formItem);
-  let config={
-    url: '/car/upload',
-    method: 'GET',
-    params: {
-      chipId: formItem.chipId,
-      plateNumber: formItem.plateNumber,
-      driverName: formItem.driverName
-    }
-  }
-  return localRequest(config);
-}
 
 export {
   uploadImg,
   localUpload,
-  localUploadCar
 }

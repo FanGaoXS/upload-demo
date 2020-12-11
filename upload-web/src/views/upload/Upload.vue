@@ -67,7 +67,6 @@
   import {
     uploadImg,
     localUpload,
-    localUploadCar
   } from "../../network/uploadRequest";
 
 

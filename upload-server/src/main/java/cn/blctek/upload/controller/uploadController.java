@@ -4,9 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -42,11 +39,10 @@ public class uploadController {
                             @RequestParam("plateNumber") String plateNumber,
                             @RequestParam("driverName") String driverName,
                             @RequestParam("file") MultipartFile file){
-        System.out.println(chipId);
-        System.out.println(plateNumber);
-        System.out.println(driverName);
-        System.out.println(file.getName());
-        System.out.println(file.isEmpty());
+        System.out.println("芯片编号->"+chipId);
+        System.out.println("车牌号->"+plateNumber);
+        System.out.println("驾驶员性名->"+driverName);
+        System.out.println("文件是否为空->"+file.isEmpty());
         return "上传图片成功";
     }
 
