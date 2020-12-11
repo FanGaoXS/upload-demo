@@ -22,19 +22,7 @@ public class uploadController {
         return "测试通过";
     }
 
-    @GetMapping("/upload")
-    public String upload(/*HttpServletRequest request,*/
-                         @RequestParam("chipId")String chipId,
-                         @RequestParam("plateNumber")String plateNumber,
-                         @RequestParam("driverName")String driverName){
-        System.out.println("chipId->"+chipId);
-        System.out.println("plateNumber->"+plateNumber);
-        System.out.println("driverName->"+driverName);
-        ;
-        return "上传成功";
-    }
-
-    @PostMapping("/uploadImg")
+    @PostMapping("/upload")
     public String uploadImg(@RequestParam("chipId") int chipId,
                             @RequestParam("plateNumber") String plateNumber,
                             @RequestParam("driverName") String driverName,
@@ -43,7 +31,6 @@ public class uploadController {
         System.out.println("车牌号->"+plateNumber);
         System.out.println("驾驶员性名->"+driverName);
         System.out.println("文件是否为空->"+file.isEmpty());
-        return "上传图片成功";
+        return "上传成功";
     }
-
 }

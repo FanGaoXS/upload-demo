@@ -12,6 +12,7 @@ function uploadImg() {
   return testRequest(config);
 }
 
+// 上传表单信息
 function localUpload(param,formItem) {
   // 创建form表单对象用于向后端传递数据（POST提交）
   let uploadData = new FormData();
@@ -28,7 +29,7 @@ function localUpload(param,formItem) {
   console.log('准备上传的车牌号->',uploadData.get('plateNumber'));
   console.log('准备上传的驾驶员姓名->',uploadData.get('driverName'));
   let config={
-    url: '/car/uploadImg',
+    url: '/car/upload',
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'
