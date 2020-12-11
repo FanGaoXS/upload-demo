@@ -25,10 +25,12 @@ function localRequest(config) {
   });
   // response拦截器，过滤data
   axiosInstance.interceptors.response.use(res => {
+    console.log('interceptors.response.onFulfilled->',res);
     return res.data;
   },error => {
-    console.log(error)
-  })
+    console.log('interceptors.response.onRejected->',error);
+    throw error;
+  });
   return axiosInstance(config);
 }
 export {

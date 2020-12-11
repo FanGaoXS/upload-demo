@@ -121,7 +121,7 @@
             console.log('上传失败->',error);
             this.$notify({
               title: '失败',
-              message: '您的车辆信息上传失败',
+              message: '您的车辆信息上传失败，请联系管理员',
               type: 'error'
             });
           });
