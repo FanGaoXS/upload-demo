@@ -35,14 +35,14 @@
           <el-upload
                   class="upload-demo"
                   ref="uploadImg"
-                  action="http://127.0.0.1:8089/car/uploadImg"
+                  action="#"
                   :on-preview="handlePreview"
                   :on-remove="handleRemove"
                   :file-list="fileList"
                   :auto-upload="false"
                   :limit="1"
                   :accept="'image/*'"
-                  :http-request="uploadImg"
+                  :http-request="upload"
                   list-type="picture">
             <el-button size="medium" type="primary">上传车辆照片<i class="el-icon-upload el-icon--right"></i></el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，只能上传一张图片</div>
@@ -66,17 +66,10 @@
 
   import {
     uploadImg,
-    localUploadImg,
+    localUpload,
     localUploadCar
   } from "../../network/uploadRequest";
 
-  uploadImg().then(res=>{
-    console.log(res);
-  });
-
-  localUploadImg().then(res=>{
-    console.log(res);
-  });
 
   export default {
     name: "Upload",
@@ -109,29 +102,41 @@
       handlePreview(file) {
         console.log(file);
       },
-      uploadImg(param){
-        console.log(param.file);
-        console.log(param.file.name);
-        let uploadData = new FormData();
-        uploadData.append('file', param.file);
-        localUploadImg(uploadData).then(res => {
-          console.log(res);
-        });
-      },
-      submitForm() {
-        console.log(this.formItem);
-        // 如果都不为空则提交
-        if (this.formItem.chipId!==0&&this.formItem.plateNumber!==''&&this.formItem.driverName!=='') {
-          // 提交车辆信息
-          localUploadCar(this.formItem).then(res=>{
-            console.log(res);
+      /* 上传文件函数
+      *  params参数是el-upload里的fileList
+      *  */
+      upload(param){
+        if (this.formItem.chipId!==0&&
+            this.formItem.plateNumber!==''&&
+            this.formItem.driverName!==''){
+          // 发起axios请求并将form表单对象传递
+          localUpload(param,this.formItem).then(res => {// 上传成功
+            console.log('上传成功->',res);
+            this.$notify({
+              title: '成功',
+              message: '您的车辆信息已经上传成功',
+              type: 'success'
+            });
+          }).catch(error => {// 上传失败
+            console.log('上传失败->',error);
+            this.$notify({
+              title: '失败',
+              message: '您的车辆信息上传失败',
+              type: 'error'
+            });
           });
-          // 提交图片
-          this.$refs.uploadImg.submit();
-          console.log('提交成功');
         } else {
-          console.log('请重新输入');
+          this.$notify({
+            title: '失败',
+            message: '请将车辆信息填写完整',
+            type: 'error'
+          });
         }
+      },
+      /* 提交上传（调用上传文件函数） */
+      submitForm() {
+        // 有文件添加进待上传列表才能调用该方法
+        this.$refs.uploadImg.submit();
       },
     }
   }
@@ -140,10 +145,11 @@
 <style scoped>
 
   .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #629efa;
+    color: #ffffff;
     text-align: center;
     line-height: 60px;
+    border-radius: 20px;
   }
 
   .el-main {

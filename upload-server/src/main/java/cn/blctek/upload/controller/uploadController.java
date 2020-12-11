@@ -25,7 +25,7 @@ public class uploadController {
         return "测试通过";
     }
 
-    @GetMapping("upload")
+    @GetMapping("/upload")
     public String upload(/*HttpServletRequest request,*/
                          @RequestParam("chipId")String chipId,
                          @RequestParam("plateNumber")String plateNumber,
@@ -37,10 +37,16 @@ public class uploadController {
         return "上传成功";
     }
 
-    @PostMapping("uploadImg")
-    public String uploadImg(MultipartFile file){
-        System.out.println(file);
+    @PostMapping("/uploadImg")
+    public String uploadImg(@RequestParam("chipId") int chipId,
+                            @RequestParam("plateNumber") String plateNumber,
+                            @RequestParam("driverName") String driverName,
+                            @RequestParam("file") MultipartFile file){
+        System.out.println(chipId);
+        System.out.println(plateNumber);
+        System.out.println(driverName);
         System.out.println(file.getName());
+        System.out.println(file.isEmpty());
         return "上传图片成功";
     }
 
