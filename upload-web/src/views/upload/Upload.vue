@@ -115,21 +115,24 @@
             this.$notify({
               title: '成功',
               message: '您的车辆信息已经上传成功',
-              type: 'success'
+              type: 'success',
+              offset: 100
             });
           }).catch(error => {// 上传失败
             console.log('上传失败->',error);
             this.$notify({
               title: '失败',
               message: '您的车辆信息上传失败，请联系管理员',
-              type: 'error'
+              type: 'error',
+              offset: 100
             });
           });
         } else {
           this.$notify({
             title: '失败',
             message: '请将车辆信息填写完整',
-            type: 'error'
+            type: 'error',
+            offset: 100
           });
         }
       },
@@ -156,7 +159,8 @@
     /*background-color: #E9EEF3;*/
     color: #333;
     text-align: center;
-    line-height: 100px;
+    line-height: 50px;
+    margin-bottom: 50px;
   }
 
   body > .el-container {
