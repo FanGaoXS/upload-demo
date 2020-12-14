@@ -9,17 +9,19 @@
 
         <!--芯片编号-->
         <el-input
-                type="hIdden"
+                type="hidden"
                 v-model="formItem.chipId"
         ></el-input>
 
         <!--车牌号-->
         <el-form-item label="车牌号">
-          <el-input
+          <!-- 自定义车牌号键盘 -->
+          <input-car @submit="getPlateNumber"></input-car>
+          <!--<el-input
                   type="text"
                   placeholder="请输入车牌号"
-                  v-model="formItem.plateNumber"
-          ></el-input>
+                  v-model.trim="formItem.plateNumber"
+          ></el-input>-->
         </el-form-item>
 
         <!--驾驶员-->
@@ -27,7 +29,7 @@
           <el-input
                   type="text"
                   placeholder="请输入驾驶员性名"
-                  v-model="formItem.driverName"
+                  v-model.trim="formItem.driverName"
           ></el-input>
         </el-form-item>
 
@@ -60,6 +62,8 @@
 
       </el-form>
 
+
+
     </el-main>
 
     <el-footer>Copyright©blctek.com</el-footer>
@@ -69,6 +73,7 @@
 
 <script>
 
+  // 引入网络请求的函数
   import {
     uploadImg,
     localUpload,
@@ -77,6 +82,9 @@
 
   export default {
     name: "Upload",
+    components: {
+
+    },
     data() {
       return {
         formItem: {
@@ -105,6 +113,13 @@
       },
       handlePreview(file) {
         console.log(file);
+      },
+      /*  输入框输入完成后的回调函数
+      * */
+      getPlateNumber(inputValue){
+        console.log(inputValue);
+        this.formItem.plateNumber=inputValue;
+        console.log(this.formItem.plateNumber);
       },
       /* 上传文件前处理函数
       *  限制文件大小

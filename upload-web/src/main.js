@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
-// 引入elementUI
+
+
+// 引入elementUI相关并使用
 import ElementUI from 'element-ui';
-// 引入elementUI的样式
 import 'element-ui/lib/theme-chalk/index.css';
-// 利用Vue的use方法全局使用elementUI
 Vue.use(ElementUI);
+
+// 引入自定义键盘相关
+import InputCar from 'input-number-plate'
+import 'input-number-plate/lib/inputCar.css'
+Vue.use(InputCar);
 
 Vue.config.productionTip = false
 
