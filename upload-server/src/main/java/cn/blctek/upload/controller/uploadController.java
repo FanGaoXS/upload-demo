@@ -23,14 +23,22 @@ public class uploadController {
     }
 
     @PostMapping("/upload")
-    public String uploadImg(@RequestParam("chipId") int chipId,
+    public String upload(@RequestParam("chipId") int chipId,
                             @RequestParam("plateNumber") String plateNumber,
                             @RequestParam("driverName") String driverName,
                             @RequestParam("file") MultipartFile file){
+        System.out.println("---upload start---");
         System.out.println("芯片编号->"+chipId);
         System.out.println("车牌号->"+plateNumber);
         System.out.println("驾驶员性名->"+driverName);
         System.out.println("文件是否为空->"+file.isEmpty());
+        System.out.print("文件大小->");
+        if (file.getSize()>0&&file.getSize()<=(1024*1024)){ //如果文件大小小于1M
+            System.out.println(file.getSize()/1024+"Kb"); //以kb显示
+        } else if (file.getSize()>(1024*1024)){// 如果文件大小大于1M
+            System.out.println(file.getSize()/1024/1024+"M"); //以显示M
+        }
+        System.out.println("---upload end---");
         return "上传成功";
     }
 }

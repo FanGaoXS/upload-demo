@@ -21,7 +21,7 @@ function testRequest(config) {
 function localRequest(config) {
   // 创建axios实例，配置baseURL
   let axiosInstance = Axios.create({
-    baseURL: 'http://127.0.0.1:8083/upload-server',
+    baseURL: 'http://127.0.0.1:8083',
     timeout: 5000
   });
   // response拦截器，过滤data
@@ -30,6 +30,7 @@ function localRequest(config) {
     return res.data;
   },error => {
     console.log('interceptors.response.onRejected->',error);
+    // 抛出异常
     throw error;
   });
   return axiosInstance(config);
@@ -39,7 +40,7 @@ function localRequest(config) {
 function wqkRequest(config) {
   // 创建axios实例，配置baseURL
   let axiosInstance = Axios.create({
-    baseURL: 'https://yueke.cloud/upload-server',
+    baseURL: 'http://upload-server.yueke.cloud/',
     timeout: 5000
   });
   // response拦截器，过滤data
@@ -48,6 +49,7 @@ function wqkRequest(config) {
     return res.data;
   },error => {
     console.log('interceptors.response.onRejected->',error);
+    // 抛出异常
     throw error;
   });
   return axiosInstance(config);
