@@ -22,10 +22,10 @@ function localUpload(param,formItem) {
   uploadData.append('chipId', formItem.chipId);
   // 将plateTypeStr（车牌类型的字符串）添加到form对象里
   let plateTypeStr='';
-  if (formItem.plateType){ // 汽油车
-    plateTypeStr='汽油车';
-  } else { // 新能源
+  if (formItem.plateType){ // 新能源
     plateTypeStr='新能源';
+  } else { // 汽油车
+    plateTypeStr='汽油车';
   }
   uploadData.append('plateType', plateTypeStr);
   // 将plateNumber（车牌号）添加到form对象里

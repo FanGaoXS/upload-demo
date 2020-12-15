@@ -18,12 +18,12 @@
           <!--开关-->
           <el-switch
                   v-model="formItem.plateType"
-                  active-color="rgb(255,197,26)"
-                  inactive-color="rgb(56,181,63)"
+                  active-color="rgb(56,181,63)"
+                  inactive-color="rgb(17,17,131)"
                   :width="50"
                   @change="changeInputBoxType"
-                  active-text="汽油车"
-                  inactive-text="新能源">
+                  active-text="新能源"
+                  inactive-text="汽油车">
           </el-switch>
         </el-form-item>
 
@@ -107,7 +107,7 @@
           // 芯片编号
           chipId: 11,
           // 车牌类型
-          plateType: true,
+          plateType: false,
           // 车牌号
           plateNumber: '',
           // 驾驶员
