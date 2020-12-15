@@ -79,7 +79,6 @@
     localUpload,
   } from "../../network/uploadRequest";
 
-
   export default {
     name: "Upload",
     components: {

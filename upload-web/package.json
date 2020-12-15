@@ -10,7 +10,7 @@
     "axios": "^0.21.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.14.1",
-    "input-number-plate": "^1.0.0",
+    "input-number-plate-plus": "^1.0.3",
     "vue": "^2.6.10"
   },
   "devDependencies": {
