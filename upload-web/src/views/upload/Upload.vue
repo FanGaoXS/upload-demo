@@ -13,10 +13,27 @@
                 v-model="formItem.chipId"
         ></el-input>
 
+        <!--车辆类型-->
+        <el-form-item label="车辆类型">
+          <!--开关-->
+          <el-switch
+                  v-model="formItem.plateType"
+                  active-color="rgb(255,197,26)"
+                  inactive-color="rgb(56,181,63)"
+                  :width="50"
+                  @change="changeInputBoxType"
+                  active-text="汽油车"
+                  inactive-text="新能源">
+          </el-switch>
+        </el-form-item>
+
         <!--车牌号-->
         <el-form-item label="车牌号">
-          <!-- 自定义车牌号键盘 -->
-          <input-car @submit="getPlateNumber"></input-car>
+          <!-- 自定义车牌号输入框以及键盘组件 -->
+          <input-car
+                  ref="inputCar"
+                  @submit="getPlateNumber"
+          ></input-car>
           <!--<el-input
                   type="text"
                   placeholder="请输入车牌号"
@@ -28,7 +45,7 @@
         <el-form-item label="驾驶员">
           <el-input
                   type="text"
-                  placeholder="请输入驾驶员性名"
+                  placeholder="请输入驾驶员姓名"
                   v-model.trim="formItem.driverName"
           ></el-input>
         </el-form-item>
@@ -89,6 +106,8 @@
         formItem: {
           // 芯片编号
           chipId: 11,
+          // 车牌类型
+          plateType: true,
           // 车牌号
           plateNumber: '',
           // 驾驶员
@@ -112,6 +131,11 @@
       },
       handlePreview(file) {
         console.log(file);
+      },
+      /*  修改车牌号输入框的类型
+      * */
+      changeInputBoxType(value){
+        this.$refs.inputCar.changeDefaultType();
       },
       /*  输入框输入完成后的回调函数
       * */

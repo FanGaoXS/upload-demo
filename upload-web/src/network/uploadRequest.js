@@ -20,12 +20,21 @@ function localUpload(param,formItem) {
   uploadData.append('file', param.file);
   // 将chipId（芯片编号）添加到form对象里
   uploadData.append('chipId', formItem.chipId);
+  // 将plateTypeStr（车牌类型的字符串）添加到form对象里
+  let plateTypeStr='';
+  if (formItem.plateType){ // 汽油车
+    plateTypeStr='汽油车';
+  } else { // 新能源
+    plateTypeStr='新能源';
+  }
+  uploadData.append('plateType', plateTypeStr);
   // 将plateNumber（车牌号）添加到form对象里
   uploadData.append('plateNumber', formItem.plateNumber);
   // 将driverName（驾驶员性名）添加到form对象里
   uploadData.append('driverName', formItem.driverName);
   console.log('准备上传的文件->',uploadData.get('file'));
   console.log('准备上传的芯片编号->',uploadData.get('chipId'));
+  console.log('准备上传的车牌类型->',uploadData.get('plateType'));
   console.log('准备上传的车牌号->',uploadData.get('plateNumber'));
   console.log('准备上传的驾驶员姓名->',uploadData.get('driverName'));
   let config={
