@@ -116,9 +116,8 @@
       /*  输入框输入完成后的回调函数
       * */
       getPlateNumber(inputValue){
-        console.log(inputValue);
+        console.log('输入的车牌号是->'+inputValue);
         this.formItem.plateNumber=inputValue;
-        console.log(this.formItem.plateNumber);
       },
       /* 上传文件前处理函数
       *  限制文件大小
