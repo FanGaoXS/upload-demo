@@ -37,6 +37,7 @@ function localUpload(param,formItem) {
   console.log('准备上传的文件->',uploadData.get('file'));
   console.log('准备上传的芯片编号->',uploadData.get('chipId'));
   console.log('准备上传的车牌类型->',uploadData.get('plateType'));
+  console.log('准备上传的车辆类型->',uploadData.get('vehicleModel'));
   console.log('准备上传的车牌号->',uploadData.get('plateNumber'));
   console.log('准备上传的驾驶员姓名->',uploadData.get('driverName'));
   let config={
