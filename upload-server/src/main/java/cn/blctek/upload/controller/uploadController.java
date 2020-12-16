@@ -25,12 +25,14 @@ public class uploadController {
     @PostMapping("/upload")
     public String upload(@RequestParam("chipId") int chipId,
                          @RequestParam("plateType") String plateType,
+                         @RequestParam("vehicleModel") String vehicleModel,
                          @RequestParam("plateNumber") String plateNumber,
                          @RequestParam("driverName") String driverName,
                          @RequestParam("file") MultipartFile file){
         System.out.println("---upload start---");
         System.out.println("芯片编号->"+chipId);
         System.out.println("车牌类型->"+plateType);
+        System.out.println("车辆类型->"+vehicleModel);
         System.out.println("车牌号->"+plateNumber);
         System.out.println("驾驶员性名->"+driverName);
         System.out.println("文件是否为空->"+file.isEmpty());

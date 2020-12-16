@@ -28,6 +28,8 @@ function localUpload(param,formItem) {
     plateTypeStr='汽油车';
   }
   uploadData.append('plateType', plateTypeStr);
+  // 将vehicleModel（车型）添加到form对象里
+  uploadData.append('vehicleModel', formItem.vehicleModel);
   // 将plateNumber（车牌号）添加到form对象里
   uploadData.append('plateNumber', formItem.plateNumber);
   // 将driverName（驾驶员性名）添加到form对象里

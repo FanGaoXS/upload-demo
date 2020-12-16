@@ -21,7 +21,7 @@ function testRequest(config) {
 function localRequest(config) {
   // 创建axios实例，配置baseURL
   let axiosInstance = Axios.create({
-    baseURL: 'http://127.0.0.1:8083',
+    baseURL: 'http://localhost:8083',
     timeout: 5000
   });
   // response拦截器，过滤data

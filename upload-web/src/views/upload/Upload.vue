@@ -13,8 +13,8 @@
                 v-model="formItem.chipId"
         ></el-input>
 
-        <!--车辆类型-->
-        <el-form-item label="车辆类型">
+        <!--车牌类型-->
+        <el-form-item label="车牌类型">
           <!--开关-->
           <el-switch
                   v-model="formItem.plateType"
@@ -25,6 +25,18 @@
                   active-text="新能源"
                   inactive-text="汽油车">
           </el-switch>
+        </el-form-item>
+
+        <!--车辆类型-->
+        <el-form-item label="车型">
+          <!--下拉选择框-->
+          <el-select v-model="formItem.vehicleModel" placeholder="请选择">
+            <!--选择组-->
+            <el-option-group v-for="group in optionGroup" :key="group.label" :label="group.label">
+              <!--选项-->
+              <el-option v-for="item in group.options" :key="item" :label="item" :value="item"></el-option>
+            </el-option-group>
+          </el-select>
         </el-form-item>
 
         <!--车牌号-->
@@ -108,6 +120,8 @@
           chipId: 11,
           // 车牌类型
           plateType: false,
+          // 车辆类型
+          vehicleModel: '',
           // 车牌号
           plateNumber: '',
           // 驾驶员
@@ -122,6 +136,27 @@
             name: 'food2.jpeg',
             url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
           }*/
+        ],
+        optionGroup:[
+          //热门车型
+          {
+            label: '热门车型',
+            // 热门车型里的options选项
+            options:[
+              '挖机',
+              '装载机',
+            ]
+          },
+          //车型名
+          {
+            label: '车型名',
+            // 车型名里的options选项
+            options: [
+              '压路机',
+              '挖机',
+              '装载机',
+            ]
+          }
         ]
       };
     },
