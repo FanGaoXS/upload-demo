@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -17,19 +19,23 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("car")
 public class uploadController {
 
-    @RequestMapping("test")
+    @RequestMapping("/test")
     public String test(){
+        System.out.println("---test 测试 start---");
+        System.out.println("---test 测试 end---");
         return "测试通过";
     }
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("chipId") int chipId,
+    public String upload(HttpServletRequest request,
+                         @RequestParam("chipId") int chipId,
                          @RequestParam("plateType") String plateType,
                          @RequestParam("vehicleModel") String vehicleModel,
                          @RequestParam("plateNumber") String plateNumber,
                          @RequestParam("driverName") String driverName,
                          @RequestParam("file") MultipartFile file){
         System.out.println("---upload start---");
+        System.out.println(request.getCharacterEncoding());
         System.out.println("芯片编号->"+chipId);
         System.out.println("车牌类型->"+plateType);
         System.out.println("车辆类型->"+vehicleModel);

@@ -216,7 +216,8 @@
       upload(param){
         if (this.formItem.chipId!==0&&
             this.formItem.plateNumber!==''&&
-            this.formItem.driverName!==''){
+            this.formItem.driverName!==''&&
+            this.formItem.vehicleModel!==''){
           // 发起axios请求并将form表单对象传递
           localUpload(param,this.formItem).then(res => {// 上传成功
             console.log('上传成功->',res);

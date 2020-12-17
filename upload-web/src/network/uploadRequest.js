@@ -1,7 +1,8 @@
 import {
   testRequest,
   localRequest,
-  wqkRequest
+  wqkRequest,
+  blctekRequest
 } from "./request";
 
 // 向后端上传图片
@@ -48,7 +49,7 @@ function localUpload(param,formItem) {
     },
     data:uploadData
   }
-  return wqkRequest(config);
+  return blctekRequest(config);
 }
 
 
