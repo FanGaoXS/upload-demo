@@ -93,10 +93,10 @@
             </el-option-group>
           </el-select>
         </el-form-item>
-        <el-form-item label="车号或者型号">
+        <el-form-item label="机械型号">
           <el-input
                   type="text"
-                  placeholder="请输入型号或者车号"
+                  placeholder="请输入机械型号"
                   v-model.trim="formItem2.machineNumber"
           ></el-input>
         </el-form-item>

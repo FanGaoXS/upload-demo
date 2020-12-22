@@ -67,7 +67,7 @@ public class uploadController {
         System.out.println(request.getCharacterEncoding());
         System.out.println("芯片编号->"+chipId);
         System.out.println("机械类型->"+machineModel);
-        System.out.println("机械型号或车号->"+machineNumber);
+        System.out.println("机械型号->"+machineNumber);
         System.out.println("机械发动机编号->"+engineNumber);
         System.out.println("驾驶员姓名->"+driverName);
         System.out.println("驾驶员手机号码->"+driverPhone);
