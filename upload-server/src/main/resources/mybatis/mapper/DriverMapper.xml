@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.blctek.upload.mapper.DriverMapper">
+    <select id="selectAllDriver" resultType="cn.blctek.upload.pojo.Driver">
+        SELECT
+            *
+        FROM
+            driver
+    </select>
+    <insert id="insertDriver" parameterType="cn.blctek.upload.pojo.Driver"
+            keyProperty="driverId" useGeneratedKeys="true">
+        INSERT INTO
+            driver
+            (driverName,driverPhone)
+        VALUES
+            (#{driverName},#{driverPhone})
+    </insert>
+</mapper>

@@ -8,9 +8,9 @@
         <el-button @click="changeIsNormalVehicle(false)" :type=" isVehicle ? '' : 'primary' " >机械</el-button>
       </el-button-group>
       <!--普通车辆表单-->
-      <el-form label-position="right" v-if="isVehicle">
+      <el-form label-position="left" v-if="isVehicle">
         <!--车牌类型-->
-        <el-form-item label="车牌类型" v-if="isVehicle">
+        <el-form-item label="车牌类型">
           <!--开关-->
           <el-switch
                   v-model="formItem1.plateType"
@@ -83,7 +83,7 @@
       </el-form><!--普通车辆表单end-->
 
       <!--机械用具表单-->
-      <el-form label-position="right" v-if="!isVehicle">
+      <el-form label-position="left" v-if="!isVehicle">
         <el-form-item label="机械类型">
           <el-select v-model="formItem2.machineModel" placeholder="请选择">
             <!--机械选择组-->
@@ -172,7 +172,7 @@
         // 普通车辆或者机械
         isVehicle: true,
         // 芯片编号
-        chipId: 11,
+        chipId: '',
         formItem1: {
           /*
           *   普通车辆表单
@@ -309,7 +309,7 @@
         // 待上传的图片是否在范围之内，true小于限制，false大于限制
         let compareFileSizeResult = this.compareFileSize(file,limitFileSize);
         if (this.isVehicle){ // 普通车辆上传前处理
-          if (this.chipId!==0
+          if (this.chipId!==''
               && this.formItem1.plateType!==null
               && this.formItem1.plateNumber!==''
               && this.formItem1.vehicleModel!==''

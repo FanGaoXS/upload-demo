@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.blctek.upload.mapper.VehicleMapper">
+    <select id="selectAllVehicle" resultMap="VehicleMap">
+        SELECT
+            *
+        FROM
+            vehicle v,
+            car c
+        WHERE
+            v.carId=c.carId
+    </select>
+    <resultMap id="VehicleMap" type="cn.blctek.upload.pojo.Vehicle">
+        <id property="vehicleId" column="vehicleId"/>
+        <result property="vehicleModel" column="vehicleModel"/>
+        <result property="plateType" column="plateType"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <association property="car" javaType="cn.blctek.upload.pojo.Car">
+            <id property="carId" column="carId"/>
+            <result property="type" column="type"/>
+            <result property="chipId" column="chipId"/>
+            <result property="driverId" column="driverId"/>
+        </association>
+    </resultMap>
+    <insert id="insertVehicle" parameterType="cn.blctek.upload.pojo.Vehicle"
+            keyProperty="vehicleId" useGeneratedKeys="true">
+        INSERT INTO
+            vehicle
+            (carId,plateNumber,plateType,vehicleModel)
+        VALUES
+            (#{carId},#{plateNumber},#{plateType},#{vehicleModel})
+    </insert>
+</mapper>
