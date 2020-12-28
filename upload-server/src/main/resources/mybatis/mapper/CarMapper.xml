@@ -14,6 +14,7 @@
         <id column="carId" property="carId"/>
         <result column="type" property="type"/>
         <result column="chipId" property="carId"/>
+        <result column="driverId" property="driverId"/>
         <association property="driver" javaType="cn.blctek.upload.pojo.Driver">
             <id column="driverId" property="driverId"/>
             <result column="driverName" property="driverName"/>

@@ -172,7 +172,7 @@
         // 普通车辆或者机械
         isVehicle: true,
         // 芯片编号
-        chipId: '',
+        chipId: '10001',
         formItem1: {
           /*
           *   普通车辆表单
@@ -383,7 +383,7 @@
             console.log('上传成功->',res);
             this.$notify({
               title: '成功',
-              message: '您的车辆信息已经上传成功',
+              message: res.msg,
               type: 'success',
               offset: 100
             });
@@ -409,7 +409,7 @@
             console.log('上传成功->',res);
             this.$notify({
               title: '成功',
-              message: '您的机械信息已经上传成功',
+              message: res.msg,
               type: 'success',
               offset: 100
             });

@@ -33,7 +33,7 @@ public class MachineServiceImpl implements MachineService {
     private CarMapper carMapper;
     @Override
     public List<Machine> findAllMachine() {
-        return machineMapper.selectAllMachine();
+        return machineMapper.selectAllMachineAndCarAndDriver();
     }
 
     @Override

@@ -25,7 +25,7 @@ public class MachineMapperTest {
     MachineMapper machineMapper;
     @Test
     public void selectAllMachine() {
-        List<Machine> machineList = machineMapper.selectAllMachine();
+        List<Machine> machineList = machineMapper.selectAllMachineAndCarAndDriver();
         machineList.forEach(machine -> {
             System.out.println(machine);
         });

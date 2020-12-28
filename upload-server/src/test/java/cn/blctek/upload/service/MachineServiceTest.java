@@ -43,7 +43,7 @@ public class MachineServiceTest {
         driver.setDriverPhone("12486411233");
         Machine machine = new Machine();
         machine.setMachineNumber("狂风199");
-        machine.setMachineType("压路机");
+        machine.setMachineModel("压路机");
         machine.setEngineNumber("461564561586415");
         Machine machineDB = machineService.addMachine(car, driver, machine);
         System.out.println(machineDB.getMachineId());

@@ -19,7 +19,7 @@ public interface MachineService {
 
     /**
      *  查询所有机械
-     * @return 机械的集合
+     * @return 机械、工程用具、驾驶员信息
      */
     List<Machine> findAllMachine();
 

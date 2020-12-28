@@ -1,17 +1,8 @@
 import {
-  testRequest,
   localRequest,
   wqkRequest,
   blctekRequest
 } from "./request";
-
-// 向后端上传图片
-export function uploadImg() {
-  let config={
-    url: '/home/multidata'
-  }
-  return testRequest(config);
-}
 
 // 上传车辆信息
 export function uploadVehicle(formData) {
@@ -23,7 +14,7 @@ export function uploadVehicle(formData) {
   console.log('准备上传的驾驶员姓名->',formData.get('driverName'));
   console.log('准备上传的驾驶员手机号码->',formData.get('driverPhone'));
   let config={
-    url: '/car/uploadVehicle',
+    url: '/vehicle/uploadVehicle',
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'
@@ -43,7 +34,7 @@ export function uploadMachine(formData) {
   console.log('准备上传的驾驶员姓名->',formData.get('driverName'));
   console.log('准备上传的驾驶员手机号码->',formData.get('driverPhone'));
   let config={
-    url: '/car/uploadMachine',
+    url: '/machine/uploadMachine',
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'

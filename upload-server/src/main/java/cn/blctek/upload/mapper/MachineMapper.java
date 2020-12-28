@@ -19,9 +19,9 @@ public interface MachineMapper {
 
     /**
      *  查询所有机械
-     * @return 机械集合
+     * @return 机械以及它的工程信息集合
      */
-    List<Machine> selectAllMachine();
+    List<Machine> selectAllMachineAndCarAndDriver();
 
     /**
      *  新增机械

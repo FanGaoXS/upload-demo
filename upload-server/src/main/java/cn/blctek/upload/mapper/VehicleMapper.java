@@ -19,9 +19,9 @@ public interface VehicleMapper {
 
     /**
      *  查询所有车辆集合
-     * @return 车辆集合
+     * @return 车辆以及它的工程信息集合
      */
-    List<Vehicle> selectAllVehicle();
+    List<Vehicle> selectAllVehicleAndCarAndDriver();
 
     /**
      *  新增车辆

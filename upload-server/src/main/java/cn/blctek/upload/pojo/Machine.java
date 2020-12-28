@@ -39,8 +39,10 @@ public class Machine {
     /**
      * 机械的类型（压路机、装载机...）
      */
-    private String machineType;
+    private String machineModel;
 
     private Car car;
+
+    private Driver driver;
 
 }

@@ -20,7 +20,7 @@ public interface CarMapper {
 
     /**
      *  查询所有工程车辆以及它的驾驶员信息
-     * @return 工程车辆集合
+     * @return 工程车辆以及它的驾驶员集合
      */
     List<Car> selectAllCarAndDriver();
 

@@ -19,7 +19,7 @@ public interface VehicleService {
 
     /**
      *  查询所有车辆信息
-     * @return 车辆信息的集合
+     * @return 车辆、工程用具、驾驶员信息
      */
     List<Vehicle> findAllVehicle();
 

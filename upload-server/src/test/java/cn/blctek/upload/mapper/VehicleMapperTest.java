@@ -25,7 +25,7 @@ public class VehicleMapperTest {
     VehicleMapper vehicleMapper;
     @Test
     public void selectAllVehicle() {
-        List<Vehicle> vehicleList = vehicleMapper.selectAllVehicle();
+        List<Vehicle> vehicleList = vehicleMapper.selectAllVehicleAndCarAndDriver();
         vehicleList.forEach(vehicle -> {
             System.out.println(vehicle);
         });

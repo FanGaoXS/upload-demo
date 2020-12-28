@@ -33,7 +33,7 @@ public class VehicleServiceImpl implements VehicleService {
     CarMapper carMapper;
     @Override
     public List<Vehicle> findAllVehicle() {
-        return vehicleMapper.selectAllVehicle();
+        return vehicleMapper.selectAllVehicleAndCarAndDriver();
     }
 
     @Override

@@ -43,4 +43,6 @@ public class Vehicle {
 
     private Car car;
 
+    private Driver driver;
+
 }
