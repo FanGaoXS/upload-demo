@@ -38,4 +38,13 @@ public class VehicleMapperTest {
         vehicleMapper.insertVehicle(vehicle);
         System.out.println(vehicle.getVehicleId());
     }
+
+    @Test
+    public void updateVehicle() {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleId(16);
+        vehicle.setPlateNumber("川A.1234B");
+        int result = vehicleMapper.updateVehicle(vehicle);
+        System.out.println(result);
+    }
 }

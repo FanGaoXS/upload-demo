@@ -30,4 +30,18 @@ public interface CarMapper {
      * @return 新增的工程车辆数量
      */
     int insertCar(Car car);
+
+    /**
+     *  修改工程车辆信息
+     * @param car   工程车辆对象
+     * @return  修改成功的工程车辆数量
+     */
+    int updateCar(Car car);
+
+    /**
+     *  删除工程车辆信息（根据carId）
+     * @param carId
+     * @return  删除成功的数量
+     */
+    int deleteCar(Integer carId);
 }

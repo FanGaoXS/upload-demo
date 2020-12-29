@@ -30,7 +30,7 @@ public class MachineController {
     private MachineService machineService;
 
     /**
-     *  上传机械信息
+     *  新增机械信息（上传）
      * @param chipId    芯片编号
      * @param machineModel  机械类型（挖机、压路机）
      * @param machineNumber 机械型号
@@ -40,14 +40,14 @@ public class MachineController {
      * @param file          上传的图片文件
      * @return              responseMap（状态码、数据、提示信息）
      */
-    @PostMapping("/uploadMachine")
-    public Map<String,Object> uploadMachine(@RequestParam("chipId") String chipId,
-                                            @RequestParam("machineModel") String machineModel,
-                                            @RequestParam("machineNumber") String machineNumber,
-                                            @RequestParam("engineNumber") String engineNumber,
-                                            @RequestParam("driverName") String driverName,
-                                            @RequestParam("driverPhone") String driverPhone,
-                                            @RequestParam("file") MultipartFile file){
+    @PostMapping("/addMachine")
+    public Map<String,Object> addMachine(@RequestParam("chipId") String chipId,
+                                         @RequestParam("machineModel") String machineModel,
+                                         @RequestParam("machineNumber") String machineNumber,
+                                         @RequestParam("engineNumber") String engineNumber,
+                                         @RequestParam("driverName") String driverName,
+                                         @RequestParam("driverPhone") String driverPhone,
+                                         @RequestParam("file") MultipartFile file){
         log.info("---上传机械信息 start---");
         log.info("芯片编号->[{}]",chipId);
         log.info("机械类型->[{}]",machineModel);
@@ -66,7 +66,6 @@ public class MachineController {
 
         Car car = new Car();
         car.setChipId(chipId);
-        car.setType("机械");
 
         Driver driver = new Driver();
         driver.setDriverName(driverName);
@@ -98,6 +97,41 @@ public class MachineController {
         resMap.put("status",true);
         resMap.put("msg","查询所有机械集合");
         resMap.put("data",machineList);
+        return resMap;
+    }
+
+    /**
+     *  修改机械信息
+     * @param machine
+     * @param driver
+     * @return
+     */
+    @GetMapping("/modifyMachine")
+    public Map<String,Object> modifyMachine(Machine machine,Driver driver){
+        Boolean result = machineService.modifyMachineAndDriverInfo(machine,driver);
+        log.info("Machine是否修改成功->[{}]",result?"是":"否");
+        HashMap<String, Object> resMap = new HashMap<>();
+        resMap.put("status",result);
+        resMap.put("msg","修改机械信息");
+        return resMap;
+    }
+
+    /**
+     *  删除机械信息
+     * @param machineId
+     * @param carId
+     * @param driverId
+     * @return
+     */
+    @GetMapping("/removeMachine")
+    public Map<String,Object> removeMachine(Integer machineId,
+                                            Integer carId,
+                                            Integer driverId){
+        Boolean result = machineService.removeMachine(machineId, carId, driverId);
+        log.info("Machine是否删除成功->[{}]",result?"是":"否");
+        HashMap<String, Object> resMap = new HashMap<>();
+        resMap.put("status",result);
+        resMap.put("msg","删除机械信息");
         return resMap;
     }
 }

@@ -39,4 +39,27 @@
         VALUES
             (#{carId},#{plateNumber},#{plateType},#{vehicleModel})
     </insert>
+    <update id="updateVehicle" parameterType="cn.blctek.upload.pojo.Vehicle">
+        UPDATE
+            vehicle
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" carId!=null and carId!='' ">
+                carId=#{carId}
+            </if>
+            <if test=" plateNumber!=null and plateNumber!='' ">
+                plateNumber=#{plateNumber}
+            </if>
+            <if test=" plateType!=null and plateType!='' ">
+                plateType=#{plateType}
+            </if>
+            <if test=" vehicleModel!=null and vehicleModel!='' ">
+                vehicleModel=#{vehicleModel}
+            </if>
+        </trim>
+        WHERE
+            vehicleId=#{vehicleId}
+    </update>
+    <delete id="deleteVehicle" parameterType="integer">
+        DELETE FROM vehicle WHERE vehicleId=#{vehicleId}
+    </delete>
 </mapper>

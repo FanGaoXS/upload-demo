@@ -29,4 +29,24 @@
         VALUES
             (#{type},#{driverId},#{chipId})
     </insert>
+    <update id="updateCar" parameterType="cn.blctek.upload.pojo.Car">
+        UPDATE
+            car
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" type!=null and type!='' ">
+                type=#{type}
+            </if>
+            <if test=" driverId!=null and driverId!='' ">
+                driverId=#{driverId}
+            </if>
+            <if test=" chipId!=null and chipId!='' ">
+                chipId=#{chipId}
+            </if>
+        </trim>
+        WHERE
+            carId=#{carId}
+    </update>
+    <delete id="deleteCar" parameterType="integer">
+        DELETE FROM car WHERE carId=#{carId}
+    </delete>
 </mapper>

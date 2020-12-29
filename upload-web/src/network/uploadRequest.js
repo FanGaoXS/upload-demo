@@ -14,7 +14,7 @@ export function uploadVehicle(formData) {
   console.log('准备上传的驾驶员姓名->',formData.get('driverName'));
   console.log('准备上传的驾驶员手机号码->',formData.get('driverPhone'));
   let config={
-    url: '/vehicle/uploadVehicle',
+    url: '/vehicle/addVehicle',
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'
@@ -34,7 +34,7 @@ export function uploadMachine(formData) {
   console.log('准备上传的驾驶员姓名->',formData.get('driverName'));
   console.log('准备上传的驾驶员手机号码->',formData.get('driverPhone'));
   let config={
-    url: '/machine/uploadMachine',
+    url: '/machine/addMachine',
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'

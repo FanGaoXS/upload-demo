@@ -36,4 +36,21 @@ public class CarMapperTest {
         int i = carMapper.insertCar(car);
         System.out.println(car.getCarId());
     }
+
+    @Test
+    public void updateCar() {
+        Car car = new Car();
+        car.setCarId(26);
+        car.setChipId("10001");
+        int result = carMapper.updateCar(car);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteCar() {
+        Car car = new Car();
+        car.setCarId(30);
+        int result = carMapper.deleteCar(car.getCarId());
+        System.out.println(result);
+    }
 }

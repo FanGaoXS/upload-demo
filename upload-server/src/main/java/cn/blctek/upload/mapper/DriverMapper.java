@@ -29,4 +29,18 @@ public interface DriverMapper {
      * @return 增加的驾驶员数量
      */
     int insertDriver(Driver driver);
+
+    /**
+     *  修改驾驶员
+     * @param driver    驾驶员对象
+     * @return  修改成功驾驶员的数量
+     */
+    int updateDriver(Driver driver);
+
+    /**
+     *  删除驾驶员信息（根据driverId）
+     * @param driverId
+     * @return  成功删除的数量
+     */
+    int deleteDriver(Integer driverId);
 }

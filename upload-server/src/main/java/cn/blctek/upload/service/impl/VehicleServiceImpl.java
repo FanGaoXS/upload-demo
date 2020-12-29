@@ -52,6 +52,7 @@ public class VehicleServiceImpl implements VehicleService {
             Integer driverId = driver.getDriverId(); //若插入成功则能够获取到driverId
 
             car.setDriverId(driverId); // 将driver表中的driverId赋给car
+            car.setType("车辆");
             carMapper.insertCar(car); //尝试向car表中插入car对象
             Integer carId = car.getCarId(); //若插入成功则能够获取到carId
 
@@ -63,6 +64,33 @@ public class VehicleServiceImpl implements VehicleService {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             System.out.println(e);
             return null;
+        }
+    }
+
+    @Override
+    public Boolean modifyVehicleAndDriverInfo(Vehicle vehicle, Driver driver) {
+        try {
+            vehicleMapper.updateVehicle(vehicle);
+            driverMapper.updateDriver(driver);
+            return true;
+        }catch (DataAccessException e){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean removeVehicle(Integer vehicleId, Integer carId, Integer driverId) {
+        try {
+            vehicleMapper.deleteVehicle(vehicleId);
+            carMapper.deleteCar(carId);
+            driverMapper.deleteDriver(driverId);
+            return true;
+        } catch (DataAccessException e){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            System.out.println(e);
+            return false;
         }
     }
 

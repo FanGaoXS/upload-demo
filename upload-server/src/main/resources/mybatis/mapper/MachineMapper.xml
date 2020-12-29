@@ -39,4 +39,27 @@
         VALUES
             (#{carId},#{machineNumber},#{machineModel},#{engineNumber})
     </insert>
+    <update id="updateMachine" parameterType="cn.blctek.upload.pojo.Machine">
+        UPDATE 
+            machine
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" carId!=null and carId!='' ">
+                carId=#{carId}
+            </if>
+            <if test=" machineNumber!=null and machineNumber!='' ">
+                machineNumber=#{machineNumber}
+            </if>
+            <if test=" engineNumber!=null and engineNumber!='' ">
+                engineNumber=#{engineNumber}
+            </if>
+            <if test=" machineModel!=null and machineModel!='' ">
+                machineModel=#{machineModel}
+            </if>
+        </trim>
+        WHERE
+            machineId=#{machineId}
+    </update>
+    <delete id="deleteMachine" parameterType="integer">
+        DELETE FROM machine WHERE machineId=#{machineId}
+    </delete>
 </mapper>

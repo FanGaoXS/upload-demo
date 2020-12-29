@@ -15,4 +15,21 @@
         VALUES
             (#{driverName},#{driverPhone})
     </insert>
+    <update id="updateDriver" parameterType="cn.blctek.upload.pojo.Driver">
+        UPDATE
+            driver
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" driverName!=null and driverName!='' ">
+                driverName=#{driverName}
+            </if>
+            <if test=" driverPhone!=null and driverPhone!='' ">
+                driverPhone=#{driverPhone}
+            </if>
+        </trim>
+        WHERE
+            driverId=#{driverId}
+    </update>
+    <delete id="deleteDriver" parameterType="integer">
+        DELETE FROM driver WHERE driverId=#{driverId}
+    </delete>
 </mapper>

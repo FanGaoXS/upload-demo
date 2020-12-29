@@ -29,4 +29,18 @@ public interface VehicleMapper {
      * @return 新增车辆的数量
      */
     int insertVehicle(Vehicle vehicle);
+
+    /**
+     *  修改车辆
+     * @param vehicle   车辆对象
+     * @return  修改成功的数量
+     */
+    int updateVehicle(Vehicle vehicle);
+
+    /**
+     *  删除车辆（根据vehicleId）
+     * @param vehicleId
+     * @return  成功删除的数量
+     */
+    int deleteVehicle(Integer vehicleId);
 }

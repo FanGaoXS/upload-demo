@@ -29,4 +29,18 @@ public interface MachineMapper {
      * @return 新增机械的数量
      */
     int insertMachine(Machine machine);
+
+    /**
+     *  修改机械信息
+     * @param machine 机械对象
+     * @return  成功修改的数量
+     */
+    int updateMachine(Machine machine);
+
+    /**
+     *  删除机械信息（根据machineId）
+     * @param machineId
+     * @return  成功删除的数量
+     */
+    int deleteMachine(Integer machineId);
 }

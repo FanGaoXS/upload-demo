@@ -52,6 +52,7 @@ public class MachineServiceImpl implements MachineService {
             Integer driverId = driver.getDriverId(); //若插入成功则能够获取到driverId
 
             car.setDriverId(driverId); // 将driver表中的driverId赋给car
+            car.setType("机械");
             carMapper.insertCar(car); //尝试向car表中插入car对象
             Integer carId = car.getCarId(); //若插入成功则能够获取到carId
 
@@ -64,6 +65,35 @@ public class MachineServiceImpl implements MachineService {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             System.out.println(e);
             return null;
+        }
+    }
+
+    @Override
+    public Boolean modifyMachineAndDriverInfo(Machine machine, Driver driver) {
+        try {
+            machineMapper.updateMachine(machine);
+            driverMapper.updateDriver(driver);
+            return true;
+        } catch (DataAccessException e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean removeMachine(Integer machineId,
+                                 Integer carId,
+                                 Integer driverId) {
+        try {
+            machineMapper.deleteMachine(machineId);
+            carMapper.deleteCar(carId);
+            driverMapper.deleteDriver(driverId);
+            return true;
+        } catch (DataAccessException e){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            System.out.println(e);
+            return false;
         }
     }
 }

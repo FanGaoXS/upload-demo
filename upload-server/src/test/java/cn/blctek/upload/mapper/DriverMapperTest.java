@@ -38,4 +38,14 @@ public class DriverMapperTest {
         driverMapper.insertDriver(driver);
         System.out.println(driver.getDriverId());
     }
+
+    @Test
+    public void updateDriver() {
+        Driver driver = new Driver();
+        driver.setDriverId(30);
+        driver.setDriverPhone("13594503393");
+        int result = driverMapper.updateDriver(driver);
+        System.out.println(driver);
+        System.out.println(result);
+    }
 }

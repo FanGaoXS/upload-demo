@@ -38,4 +38,13 @@ public class MachineMapperTest {
         machineMapper.insertMachine(machine);
         System.out.println(machine.getMachineId());
     }
+
+    @Test
+    public void updateMachine() {
+        Machine machine = new Machine();
+        machine.setMachineId(8);
+        machine.setEngineNumber("100000000000001");
+        int result = machineMapper.updateMachine(machine);
+        System.out.println(result);
+    }
 }
